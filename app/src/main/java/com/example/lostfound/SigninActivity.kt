@@ -3,9 +3,8 @@ package com.example.lostfound
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+
 import android.widget.Toast
-import com.codindstuff.loginandssignup.databinding.ActivitySignInBuilding
 import com.example.lostfound.databinding.ActivitySigninBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -27,18 +26,20 @@ class SigninActivity : AppCompatActivity() {
         binding.Button.setOnClickListener {
             val emaili = binding.email.text.toString()
             val pass = binding.password.text.toString()
-            if (emaili.isNotEmpty() && pass.isNotEmpty()) {
+            if (emaili.isNotEmpty() && pass.isNotEmpty()){
 
                 firebaseAuth.signInWithEmailAndPassword(emaili, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                    } else {
+                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+
                     }
-                } else {
-                    Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Empty Fields are not allowed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
@@ -46,7 +47,7 @@ class SigninActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if (firebaseAuth.currentUser != null) {
+        if(firebaseAuth.currentUser != null){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
