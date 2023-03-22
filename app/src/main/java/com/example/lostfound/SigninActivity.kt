@@ -26,7 +26,7 @@ class SigninActivity : AppCompatActivity() {
         binding.Button.setOnClickListener {
             val emaili = binding.email.text.toString()
             val pass = binding.password.text.toString()
-            if (emaili.isNotEmpty() && pass.isNotEmpty()){
+            if (emaili.isNotEmpty() && pass.isNotEmpty()) {
 
                 firebaseAuth.signInWithEmailAndPassword(emaili, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -43,13 +43,14 @@ class SigninActivity : AppCompatActivity() {
             }
         }
     }
+                    override fun onStart(){
+                super.onStart()
+                if(firebaseAuth.currentUser != null){
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
 
-    override fun onStart() {
-        super.onStart()
-
-        if(firebaseAuth.currentUser != null){
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+            }
     }
-}
+
+

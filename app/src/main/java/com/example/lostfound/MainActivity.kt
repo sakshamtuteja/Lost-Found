@@ -2,6 +2,7 @@ package com.example.lostfound
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import com.example.lostfound.databinding.ActivityMainBinding
 
