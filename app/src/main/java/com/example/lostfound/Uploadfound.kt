@@ -7,13 +7,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.lostfound.databinding.ActivityUploadfoundBinding
 import com.example.lostfound.databinding.ActivityUploadlostBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class Uploadlost : AppCompatActivity() {
-    private lateinit var binding : ActivityUploadlostBinding
+class Uploadfound : AppCompatActivity() {
+    private lateinit var binding : ActivityUploadfoundBinding
     private lateinit var storageRef : StorageReference
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var imageUri : Uri? = null
@@ -21,7 +22,7 @@ class Uploadlost : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityUploadlostBinding.inflate(layoutInflater)
+        binding = ActivityUploadfoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initVars()
@@ -32,7 +33,7 @@ class Uploadlost : AppCompatActivity() {
             uploadImage()
         }
         binding.showall.setOnClickListener {
-            startActivity(Intent(this, Imageslostactivity::class.java))
+            startActivity(Intent(this, Imagesfoundactivity::class.java))
         }
         binding.imageView.setOnClickListener {
             resultLauncher.launch("image/*")
@@ -47,7 +48,7 @@ class Uploadlost : AppCompatActivity() {
 
 
     private fun initVars(){
-        storageRef = FirebaseStorage.getInstance().reference.child("Images")
+        storageRef = FirebaseStorage.getInstance().reference.child("ImagesFound")
         firebaseFirestore = FirebaseFirestore.getInstance()
     }
     private fun uploadImage(){
@@ -61,7 +62,7 @@ class Uploadlost : AppCompatActivity() {
                         val map =  HashMap<String , Any >()
                         map["pic"] = uri.toString()
 
-                        firebaseFirestore.collection("images").add(map).addOnCompleteListener{ firestoreTask ->
+                        firebaseFirestore.collection("imagesfound").add(map).addOnCompleteListener{ firestoreTask ->
                             if (firestoreTask.isSuccessful){
                                 Toast.makeText(this, "Uploaded Successfully" , Toast.LENGTH_SHORT).show()
 
