@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/upload"
     tools:context=".Uploadfound">
+
     <Button
         android:id="@+id/upload"
         android:layout_width="match_parent"
@@ -14,22 +16,23 @@
         android:text="Upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.622" />
 
     <Button
         android:id="@+id/showall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Show All"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upload"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+        app:layout_constraintVertical_bias="0.047" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,8 +40,10 @@
         android:layout_height="144dp"
         app:layout_constraintBottom_toTopOf="@+id/upload"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.763"
         app:srcCompat="@drawable/baseline_add_a_photo_24" />
 
     <ProgressBar
