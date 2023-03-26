@@ -3,6 +3,7 @@ package com.example.lostfound
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.lostfound.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -20,9 +21,11 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.button.setOnClickListener {
+            binding.progressBar3.visibility = View.VISIBLE
             val emaili = binding.email.text.toString()
             val pass = binding.password.text.toString()
             val confirmpass = binding.repassword.text.toString()
+
             if (emaili.isNotEmpty() && pass.isNotEmpty() && confirmpass.isNotEmpty()) {
                 if (pass == confirmpass) {
                     firebaseAuth.createUserWithEmailAndPassword(emaili, pass)
@@ -43,6 +46,7 @@ class SignUpActivity : AppCompatActivity() {
                         Toast.makeText(this, "Empty Fields are not allowed", Toast.LENGTH_SHORT)
                             .show()
                     }
+            binding.progressBar3.visibility = View.GONE
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.example.lostfound
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 import android.widget.Toast
 import com.example.lostfound.databinding.ActivitySigninBinding
@@ -24,9 +25,11 @@ class SigninActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.Button.setOnClickListener {
+            binding.progressBar2.visibility = View.VISIBLE
             val emaili = binding.email.text.toString()
             val pass = binding.password.text.toString()
             if (emaili.isNotEmpty() && pass.isNotEmpty()) {
+
 
                 firebaseAuth.signInWithEmailAndPassword(emaili, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -41,6 +44,7 @@ class SigninActivity : AppCompatActivity() {
                 Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
 
             }
+            binding.progressBar2.visibility = View.GONE
         }
     }
                     override fun onStart(){
