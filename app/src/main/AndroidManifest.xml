@@ -16,16 +16,16 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".Imagesfoundactivity"
+            android:name=".FoundRecycler.Imagesfoundactivity"
             android:exported="false" />
         <activity
-            android:name=".Uploadfound"
+            android:name=".FoundRecycler.Uploadfound"
             android:exported="false" />
         <activity
-            android:name=".Imageslostactivity"
+            android:name=".LostRecycler.Imageslostactivity"
             android:exported="false" />
         <activity
-            android:name=".Uploadlost"
+            android:name=".LostRecycler.Uploadlost"
             android:exported="false" />
         <activity
             android:name=".SigninActivity"

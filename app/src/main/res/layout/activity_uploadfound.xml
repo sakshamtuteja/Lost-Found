@@ -5,46 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/upload"
-    tools:context=".Uploadfound">
+    tools:context=".FoundRecycler.Uploadfound">
 
     <Button
         android:id="@+id/upload"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+
+
+        android:onClick="insert_data"
         android:text="Upload"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintTop_toBottomOf="@+id/placelost"
+        app:layout_constraintVertical_bias="0.282" />
 
     <Button
-        android:id="@+id/showall"
-        android:layout_width="match_parent"
+        android:id="@+id/picklost"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Show All"
+        android:text="Pick Image"
+        android:onClick="insert_Img"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upload"
-        app:layout_constraintVertical_bias="0.047" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="172dp"
-        android:layout_height="144dp"
-        app:layout_constraintBottom_toTopOf="@+id/upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.763"
-        app:srcCompat="@drawable/baseline_add_a_photo_24" />
+        app:layout_constraintTop_toBottomOf="@+id/imagelost"
+        app:layout_constraintVertical_bias="0.139" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -53,11 +45,83 @@
         android:indeterminateTint="@color/teal_200"
         android:visibility="gone"
 
-        app:layout_constraintBottom_toTopOf="@+id/showall"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upload"/>
+
+    <EditText
+        android:id="@+id/itemlost"
+        android:layout_width="350dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="Item Found"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
+
+    <EditText
+        android:id="@+id/dol"
+        android:layout_width="350dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Date of Found"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemlost"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <EditText
+        android:id="@+id/placelost"
+        android:layout_width="350dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Place Of Found"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dol" />
+
+    <ImageView
+        android:id="@+id/imagelost"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placelost"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/showlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show List"
+        android:onClick="showList"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/picklost"
+        app:layout_constraintVertical_bias="0.286" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

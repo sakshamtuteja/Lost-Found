@@ -3,8 +3,9 @@ package com.example.lostfound
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import androidx.fragment.app.Fragment
+import com.example.lostfound.FoundRecycler.Found
+import com.example.lostfound.LostRecycler.Lost
 import com.example.lostfound.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
