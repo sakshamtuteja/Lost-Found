@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fragfound"
+    android:background="@color/white"
     tools:context=".FoundRecycler.Found">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,6 +20,10 @@
         android:clickable="true"
         android:src="@drawable/baseline_add_24" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </FrameLayout>

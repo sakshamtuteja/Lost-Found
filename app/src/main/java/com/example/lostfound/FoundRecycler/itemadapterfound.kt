@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.lostfound.R
@@ -13,9 +14,9 @@ import com.example.lostfound.R
 class itemadapterfound (private val itmlst:ArrayList<ImagesAdapterFound>):
     RecyclerView.Adapter<itemadapterfound.itmHolder>() {
     class itmHolder(itmView: View):RecyclerView.ViewHolder(itmView){
-        val itmname: EditText =itmView.findViewById(R.id.editname)
-        val itmdate: EditText =itmView.findViewById(R.id.editdate)
-        val itmplace: EditText =itmView.findViewById(R.id.editplace)
+        val itmname: TextView =itmView.findViewById(R.id.editname)
+        val itmdate: TextView =itmView.findViewById(R.id.editdate)
+        val itmplace: TextView =itmView.findViewById(R.id.editplace)
         val itmimg: ImageView =itmView.findViewById(R.id.itm_img)
 
     }
