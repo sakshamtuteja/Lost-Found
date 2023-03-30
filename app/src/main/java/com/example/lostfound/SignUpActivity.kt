@@ -41,12 +41,15 @@ class SignUpActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "Password is Not matching", Toast.LENGTH_SHORT).show()
                 }
+                //val intent = Intent(this, SigninActivity::class.java)
+                //startActivity(intent)
             }
                     else {
                         Toast.makeText(this, "Empty Fields are not allowed", Toast.LENGTH_SHORT)
                             .show()
                     }
-            binding.progressBar3.visibility = View.GONE
+
+                    //binding.progressBar3.visibility = View.GONE
                 }
             }
         }

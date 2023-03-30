@@ -1,6 +1,7 @@
 package com.example.lostfound.LostRecycler
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -8,22 +9,47 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
+import android.widget.DatePicker
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.lostfound.databinding.ActivityUploadlostBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.time.Month
+import java.time.Year
+import java.util.*
 
 class Uploadlost : AppCompatActivity() {
     var sImage:String? =""
     private lateinit var db: DatabaseReference
     private lateinit var binding : ActivityUploadlostBinding
+    //private lateinit var datePicker: DatePicker
+    //private lateinit var dol :TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadlostBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val myCalender = Calendar.getInstance()
+        val datepicker = DatePickerDialog.OnDateSetListener{view, year, month, dayOfmonth ->
+            myCalender.set(Calendar.YEAR,year)
+            myCalender.set(Calendar.MONTH,month)
+            myCalender.set(Calendar.DAY_OF_MONTH,dayOfmonth)
+            updateLable(myCalender)
+        }
+        binding.datepicker.setOnClickListener {
+            DatePickerDialog(this, datepicker, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH),
+                myCalender.get(Calendar.DAY_OF_MONTH)).show()
+        }
     }
+    private fun updateLable(myCalendar: Calendar){
+        val myFormat = "dd-MM-yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.UK)
+        binding.dol.setText(sdf.format(myCalendar.time))
+    }
+
 
 
     fun insert_data(view: View) {

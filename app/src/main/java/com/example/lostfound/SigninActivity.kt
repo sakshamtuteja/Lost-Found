@@ -44,17 +44,17 @@ class SigninActivity : AppCompatActivity() {
                 Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
 
             }
-            binding.progressBar2.visibility = View.GONE
+            //binding.progressBar2.visibility = View.GONE
         }
     }
-                    override fun onStart(){
+         /*           override fun onStart(){
                 super.onStart()
                 if(firebaseAuth.currentUser != null){
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
 
-            }
+            }*/
     }
 
 

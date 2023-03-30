@@ -1,6 +1,7 @@
 package com.example.lostfound.FoundRecycler
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -15,6 +16,8 @@ import com.example.lostfound.databinding.ActivityUploadfoundBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Uploadfound : AppCompatActivity() {
     var sImage:String? =""
@@ -26,7 +29,23 @@ class Uploadfound : AppCompatActivity() {
 
         binding = ActivityUploadfoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val myCalender = Calendar.getInstance()
+        val datepicker = DatePickerDialog.OnDateSetListener{ view, year, month, dayOfmonth ->
+            myCalender.set(Calendar.YEAR,year)
+            myCalender.set(Calendar.MONTH,month)
+            myCalender.set(Calendar.DAY_OF_MONTH,dayOfmonth)
+            updateLable(myCalender)
+        }
+        binding.datepicker.setOnClickListener {
+            DatePickerDialog(this, datepicker, myCalender.get(Calendar.YEAR), myCalender.get(
+                Calendar.MONTH),
+                myCalender.get(Calendar.DAY_OF_MONTH)).show()
+        }
+    }
+    private fun updateLable(myCalendar: Calendar){
+        val myFormat = "dd-MM-yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.UK)
+        binding.dol.setText(sdf.format(myCalendar.time))
     }
     fun insert_data(view: View) {
         val itemLost = binding.itemlost.text.toString()
