@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
+import java.time.Month
+import java.time.Year
 import java.util.*
 
 class Uploadfound : AppCompatActivity() {
@@ -26,19 +28,17 @@ class Uploadfound : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityUploadfoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val myCalender = Calendar.getInstance()
-        val datepicker = DatePickerDialog.OnDateSetListener{ view, year, month, dayOfmonth ->
+        val datepicker = DatePickerDialog.OnDateSetListener{view, year, month, dayOfmonth ->
             myCalender.set(Calendar.YEAR,year)
             myCalender.set(Calendar.MONTH,month)
             myCalender.set(Calendar.DAY_OF_MONTH,dayOfmonth)
             updateLable(myCalender)
         }
-        binding.datepicker.setOnClickListener {
-            DatePickerDialog(this, datepicker, myCalender.get(Calendar.YEAR), myCalender.get(
-                Calendar.MONTH),
+        binding.datepicker.setOnClickListener{
+            DatePickerDialog(this, datepicker, myCalender.get(Calendar.YEAR), myCalender.get(Calendar.MONTH),
                 myCalender.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
@@ -58,6 +58,7 @@ class Uploadfound : AppCompatActivity() {
         db.child(id.toString()).setValue(item).addOnSuccessListener {
             binding.itemlost.text.clear()
             binding.dol.text.clear()
+            binding.placelost.text.clear()
             sImage = ""
             Toast.makeText(this, "Data Inserted", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {

@@ -63,6 +63,7 @@ class Uploadlost : AppCompatActivity() {
         db.child(id.toString()).setValue(item).addOnSuccessListener {
             binding.itemlost.text.clear()
             binding.dol.text.clear()
+            binding.placelost.text.clear()
             sImage = ""
             Toast.makeText(this, "Data Inserted", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
